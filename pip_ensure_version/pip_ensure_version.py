@@ -31,11 +31,6 @@ import logging
 import subprocess
 from typing import Tuple, Optional
 
-from pip._internal.metadata import get_environment
-from pip._internal.metadata.pkg_resources import BaseDistribution
-from pip._internal.models.direct_url import VcsInfo
-from pip._vendor.packaging.version import Version
-
 
 LOGGER = logging.getLogger(__name__)
 handler = logging.StreamHandler(sys.stdout)
@@ -44,6 +39,18 @@ handler.setFormatter(
 )
 LOGGER.addHandler(handler)
 LOGGER.setLevel(logging.INFO)
+
+try:
+    from pip._internal.metadata import get_environment
+    from pip._internal.metadata.pkg_resources import BaseDistribution
+    from pip._internal.models.direct_url import VcsInfo
+    from pip._vendor.packaging.version import Version
+except ModuleNotFoundError:
+    LOGGER.error(
+        "Pip is not installed! The following functions will crash when called."
+    )
+    # placeholders
+    BaseDistribution = None
 
 
 class PipAutoInstallError(Exception):
