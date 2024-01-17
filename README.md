@@ -16,9 +16,15 @@ pip_ensure_version.require_gitpackage(
     "aa00d757b58c43523d7c518cdac600d4a75c6015", # commit id (optional)
 )
 
+pip_ensure_version.require_gitpackage(
+    "easy-visualiser",
+    ">0.1.2",
+)
+
 # at this point, the requested package will be up-to-date
 import tqdm
 import soraxas_toolbox
+import easy_visualiser
 
 ...
 
