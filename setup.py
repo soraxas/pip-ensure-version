@@ -8,13 +8,7 @@ this_directory = path.abspath(path.dirname(__file__))
 with open(path.join(this_directory, "README.md"), encoding="utf-8") as f:
     long_description = f.read()
 
-# read the version file
-VERSIONFILE = "pip_ensure_version/_version.py"
-verstrline = open(VERSIONFILE, "rt").read()
-mo = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]", verstrline, re.M)
-if not mo:
-    raise RuntimeError("Unable to find version string in %s." % (VERSIONFILE,))
-version_str = mo.group(1)
+from pip_ensure_version import __version__ as version_str
 
 setup(
     name="pip-ensure-version",
