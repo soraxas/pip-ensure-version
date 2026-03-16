@@ -31,7 +31,6 @@ import logging
 import subprocess
 from typing import Tuple, Optional
 
-
 LOGGER = logging.getLogger(__name__)
 handler = logging.StreamHandler(sys.stdout)
 handler.setFormatter(
